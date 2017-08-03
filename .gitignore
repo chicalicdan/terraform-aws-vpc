@@ -26,3 +26,5 @@ website/node_modules
 credentials.dr
 changes.terraform
 *.tfstate.backup
+backend.tf
+variables.tf

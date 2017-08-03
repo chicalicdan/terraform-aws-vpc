@@ -84,13 +84,6 @@ resource "aws_default_vpc_dhcp_options" "dhcp" {
   tags = "${merge(var.tags, map("Name", format("%s-%s-dhcp", var.env, var.region)))}"
 }
 
-resource "aws_db_subnet_group" "private" {
-  name        = "${var.env}-${var.region}-private-subnet"
-  description = "Database subnet group for private subnets"
-  subnet_ids  = ["${aws_subnet.private.*.id}"]
-  tags        = "${merge(var.tags, map("Name", format("%s-%s-private-subnet", var.env, var.region)))}"
-}
-
 resource "aws_key_pair" "devops-dr" {
   key_name   = "${var.key_name}"
   public_key = "${var.pub_key}"
